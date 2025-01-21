@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const Register = () => {
+const Register = ({ mode }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [mode, setMode] = useState("register");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(username);
-    console.log(password);
     try {
       const response = await axios.post(
         `http://localhost:5000/api/auth/${mode}`,
@@ -17,13 +14,15 @@ const Register = () => {
           username,
           password,
         },
+        { withCredentials: true },
       );
-      if (response.status === 201) {
-        console.log(`${mode} successful`, response.data);
+      if (response.data.redirectTo) {
+        window.location.href = response.data.redirectTo;
       }
+      console.log(response);
     } catch (error) {
       if (error.response) {
-        console.error("Error response", error.response.data);
+        console.error("Error response", error);
         alert(`${mode} failed`);
       } else if (error.request) {
         console.error("request error", error.request);
@@ -33,31 +32,37 @@ const Register = () => {
     }
   };
   return (
-    <>
-      <p
-        onClick={() => {
-          mode === "register" ? setMode("login") : setMode("register");
-        }}
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-4 max-w-md mx-auto p-4 bg-gray-50 rounded shadow"
+    >
+      <input
+        type="text"
+        id="username"
+        className="mt-1 p-2 block w-full rounded border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        required
+      />
+
+      <input
+        type="password"
+        id="password"
+        className="mt-1 p-2 block w-full rounded border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+
+      <button
+        type="submit"
+        className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
       >
-        {mode}
-      </p>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          id="username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-
-        <input
-          type="text"
-          id="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <button type="submit">{mode}</button>
-      </form>
-    </>
+        {mode === "register" ? "Register" : "Login"}
+      </button>
+    </form>
   );
 };
-
 export default Register;
