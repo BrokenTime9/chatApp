@@ -33,19 +33,19 @@ const Dashboard = () => {
           <div className="w-96 bg-gray-800 text-white p-4 flex flex-col">
             <div className="flex flex-row text-xl font-semibold mb-5 justify-between">
               <h1>Chats</h1>
-              <h1 className="text-blue-400">{user ? user : ""}</h1>
+              <h1 className="text-blue-400">{user || ""}</h1>
             </div>
             <ShowChats />
           </div>
-          <div className="flex flex-col h-screen">
+          <div className="flex flex-col flex-grow h-screen">
             <ShowMessages />
             <SendMessage />
           </div>
           <button
             onClick={toggleFormVisibility}
-            className="fixed bottom-10 right-10 bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="fixed bottom-28 right-10 bg-blue-500 text-white flex items-center justify-center w-10 h-10  rounded-full shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            <span className="text-3xl">+</span>
+            <span className="text-4xl">+</span>
           </button>
           {/* Create Chat form (only visible when isFormVisible is true) */}
           {isFormVisible && <CreateChat />}{" "}

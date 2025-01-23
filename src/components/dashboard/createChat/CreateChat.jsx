@@ -25,7 +25,7 @@ const CreateChat = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-white p-6 rounded-lg shadow-lg w-96 z-10"
+      className="fixed bottom-28 left-3/4 transform -translate-x-1/2 bg-white p-6 rounded-lg shadow-lg w-96 z-10"
     >
       <h2 className="text-xl font-semibold mb-4 text-center">Create a Chat</h2>
 

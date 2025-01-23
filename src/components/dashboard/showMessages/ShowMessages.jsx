@@ -5,6 +5,11 @@ import IdContext from "../context/chatIdContext";
 const ShowMessages = () => {
   const { chatId } = useContext(IdContext);
   const [messages, setMessages] = useState([]);
+
+  const handleMap = (e, i) => {
+    return <p key={i}>{e.content}</p>;
+  };
+
   useEffect(() => {
     if (chatId) {
       axios
@@ -18,7 +23,15 @@ const ShowMessages = () => {
         });
     }
   }, [chatId]);
-  return <p>{messages[0]?.content}</p>;
+  return (
+    <div className="flex-grow">
+      {chatId === ""
+        ? "Click on a chat to show messages"
+        : !messages || messages.length === 0
+          ? "No messages in this chat yet"
+          : messages.map(handleMap)}
+    </div>
+  );
 };
 
 export default ShowMessages;
