@@ -2,9 +2,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Chat from "./chat/Chat";
 
-const ShowChats = () => {
+const ShowChats = ({ chatVisibility }) => {
   const [chats, setChats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     axios
       .post("http://localhost:5000/api/getChats", {}, { withCredentials: true })
@@ -19,8 +20,12 @@ const ShowChats = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-2 bg-gray-800 rounded-lg ">
-      <Chat loading={isLoading} chatArray={chats} />
+    <div className="w-full max-w-4xl mx-auto p-2 bg-gray-800 rounded-lg overflow-y-auto no-scrollbar">
+      <Chat
+        loading={isLoading}
+        chatArray={chats}
+        chatVisibility={chatVisibility}
+      />
     </div>
   );
 };

@@ -1,17 +1,36 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import IdContext from "../../context/chatIdContext";
 import UserContext from "../../context/userContext";
+import WsContext from "../../context/wsContext";
 
-const Chat = ({ loading, chatArray }) => {
-  const { setChatId } = useContext(IdContext);
+const Chat = ({ loading, chatArray, chatVisibility }) => {
+  const { setChatId, chatId } = useContext(IdContext);
   const { user } = useContext(UserContext);
+  const { ws, setWs } = useContext(WsContext);
+
+  const handleClick = (chat) => {
+    chatVisibility();
+    setChatId([chat._id, chat.owner1.username, chat.owner2.username]);
+  };
+
+  useEffect(() => {
+    if (chatId.length > 0) {
+      if (ws) {
+        ws.close();
+      }
+
+      const newWs = new WebSocket(`ws://localhost:5000?chatId=${chatId[0]}`);
+
+      setWs(newWs);
+    }
+  }, [chatId]);
   return (
     <>
       {!loading ? (
-        chatArray.map((chat) => (
+        chatArray.map((chat, i) => (
           <div
-            key={chat._id}
-            onClick={() => setChatId(chat._id)}
+            key={i}
+            onClick={() => handleClick(chat)}
             className="flex items-center justify-between p-3 mb-4 bg-gray-100 rounded-lg shadow-md hover:bg-gray-200 cursor-pointer"
           >
             {/* Owner 1 */}
