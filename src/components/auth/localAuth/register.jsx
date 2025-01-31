@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+
+import UrlContext from "../../context/urlContext";
 import axios from "axios";
 
 const Register = ({ mode }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { url } = useContext(UrlContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/auth/${mode}`,
+        `${url}/api/auth/${mode}`,
         {
           username,
           password,
@@ -17,6 +20,7 @@ const Register = ({ mode }) => {
         { withCredentials: true },
       );
       if (response.data.redirectTo) {
+        console.log(response.data.redirectTo);
         window.location.href = response.data.redirectTo;
       }
       console.log(response);

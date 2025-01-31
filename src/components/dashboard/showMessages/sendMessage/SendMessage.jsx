@@ -3,12 +3,14 @@ import axios from "axios";
 import IdContext from "../../context/chatIdContext";
 import WsContext from "../../context/wsContext";
 import UserContext from "../../context/userContext";
+import UrlContext from "../../../context/urlContext";
 
 const SendMessage = () => {
   const [context, setContext] = useState("");
   const { chatId } = useContext(IdContext);
   const { ws } = useContext(WsContext);
   const { user } = useContext(UserContext);
+  const { url } = useContext(UrlContext);
 
   const adjustHeight = (e) => {
     e.target.style.height = "auto";
@@ -36,7 +38,7 @@ const SendMessage = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/message",
+        `${url}/api/message`,
         {
           content: context,
           chatId: chatId[0],

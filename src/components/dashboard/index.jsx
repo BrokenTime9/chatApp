@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import ShowChats from "./showChat/ShowChat";
 import ChatHeader from "./showChat/chatHeader/ChatHeader";
@@ -8,6 +8,7 @@ import IdContext from "./context/chatIdContext";
 import UserContext from "./context/userContext";
 import SendMessage from "./showMessages/sendMessage/SendMessage";
 import WsContext from "./context/wsContext";
+import UrlContext from "../context/urlContext";
 
 const Dashboard = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -15,11 +16,12 @@ const Dashboard = () => {
   const [user, setUser] = useState("");
   const [isChatVisible, setIsChatVisible] = useState(true);
   const [ws, setWs] = useState("");
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 426);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 769);
+  const { url } = useContext(UrlContext);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 426);
+      setIsMobile(window.innerWidth < 769);
     };
 
     window.addEventListener("resize", handleResize);
@@ -29,7 +31,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     axios
-      .post("http://localhost:5000/api/user", {}, { withCredentials: true })
+      .post(`${url}/api/user`, {}, { withCredentials: true })
       .then((data) => {
         setUser(data.data.username);
       })
@@ -50,15 +52,22 @@ const Dashboard = () => {
           <div className="flex h-[100%] min-h-96">
             {isChatVisible ? (
               <div
-                className="bg-gray-800 text-white p-4  flex-col"
+                className=" bg-gray-800 text-white p-4  flex-col"
                 style={{
-                  width: isMobile ? "100vw" : "24rem",
-                  display: isMobile ? "block" : "flex",
-                  zIndex: "1",
+                  width: isMobile
+                    ? !chatId.length > 0
+                      ? "100vw"
+                      : "0"
+                    : "24rem",
+                  display: isMobile
+                    ? !chatId.length > 0
+                      ? "flex"
+                      : "none"
+                    : "flex",
                 }}
               >
                 <div className="flex flex-row text-xl font-semibold mb-5 justify-between">
-                  <h1 onClick={toggleChatVisibility}>Chats</h1>
+                  <h1>Chats</h1>
                   <h1
                     className="text-white font-semibold"
                     onClick={toggleFormVisibility}
@@ -66,7 +75,7 @@ const Dashboard = () => {
                     ⫶
                   </h1>
                 </div>
-                <ShowChats chatVisibility={toggleChatVisibility} />
+                <ShowChats />
               </div>
             ) : (
               ""
@@ -75,8 +84,9 @@ const Dashboard = () => {
               {chatId.length > 1 ? (
                 <>
                   <ChatHeader
+                    mobile={isMobile}
                     chat={isChatVisible}
-                    chatVisibility={toggleChatVisibility}
+                    chatVisibility={isMobile ? toggleChatVisibility : undefined}
                   />
                   <ShowMessages />
                   <SendMessage />

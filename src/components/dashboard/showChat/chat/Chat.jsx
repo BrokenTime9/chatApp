@@ -3,13 +3,13 @@ import IdContext from "../../context/chatIdContext";
 import UserContext from "../../context/userContext";
 import WsContext from "../../context/wsContext";
 
-const Chat = ({ loading, chatArray, chatVisibility }) => {
+const Chat = ({ loading, chatArray }) => {
   const { setChatId, chatId } = useContext(IdContext);
   const { user } = useContext(UserContext);
   const { ws, setWs } = useContext(WsContext);
+  const domain = ["localhost:5000", "chatappbackend-omj2.onrender.com"];
 
   const handleClick = (chat) => {
-    chatVisibility();
     setChatId([chat._id, chat.owner1.username, chat.owner2.username]);
   };
 
@@ -19,9 +19,11 @@ const Chat = ({ loading, chatArray, chatVisibility }) => {
         ws.close();
       }
 
-      const newWs = new WebSocket(`ws://localhost:5000?chatId=${chatId[0]}`);
+      const newWs = new WebSocket(`ws://${domain[1]}?chatId=${chatId[0]}`);
 
-      setWs(newWs);
+      newWs.onopen = () => {
+        setWs(newWs);
+      };
     }
   }, [chatId]);
   return (

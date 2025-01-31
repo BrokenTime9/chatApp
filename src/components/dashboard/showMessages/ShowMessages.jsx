@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import IdContext from "../context/chatIdContext";
 import UserContext from "../context/userContext";
 import WsContext from "../context/wsContext";
+import UrlContext from "../../context/urlContext";
 
 const ShowMessages = () => {
   const { chatId } = useContext(IdContext);
@@ -10,6 +11,7 @@ const ShowMessages = () => {
   const [messages, setMessages] = useState([]);
   const messageEndRef = useRef(null);
   const { ws } = useContext(WsContext);
+  const { url } = useContext(UrlContext);
 
   const handleMap = (e, i) => {
     return (
@@ -27,7 +29,7 @@ const ShowMessages = () => {
   useEffect(() => {
     if (chatId[0]) {
       axios
-        .get(`http://localhost:5000/api/messages/${chatId[0]}`)
+        .get(`${url}/api/messages/${chatId[0]}`)
         .then((data) => {
           setMessages(data.data);
         })

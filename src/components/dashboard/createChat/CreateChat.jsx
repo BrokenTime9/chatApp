@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
+import UrlContext from "../../context/urlContext";
 
 const CreateChat = () => {
   const [user, setUser] = useState("");
+  const { url } = useContext(UrlContext);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       console.log(user);
       const response = await axios.post(
-        "http://localhost:5000/api/chat",
+        `${url}/api/chat`,
         {
           owner2: user,
         },

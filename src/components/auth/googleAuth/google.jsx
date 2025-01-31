@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import UrlContext from "../../context/urlContext";
 
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+console.log("clientId", process.env.REACT_APP_GOOGLE_CLIENT_ID);
 
 export const GoogleLoginButton = ({ mode }) => {
-  const REDIRECT_URI = `http://localhost:5000/api/auth/google${mode}`;
+  const { url } = useContext(UrlContext);
+  const REDIRECT_URI = `${url}/api/auth/google${mode}`;
 
   const loginWithGoogle = () => {
     const GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth";

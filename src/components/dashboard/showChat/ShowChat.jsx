@@ -1,14 +1,16 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Chat from "./chat/Chat";
+import UrlContext from "../../context/urlContext";
 
 const ShowChats = ({ chatVisibility }) => {
   const [chats, setChats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { url } = useContext(UrlContext);
 
   useEffect(() => {
     axios
-      .post("http://localhost:5000/api/getChats", {}, { withCredentials: true })
+      .post(`${url}/api/getChats`, {}, { withCredentials: true })
       .then((response) => {
         setChats(response.data);
         setIsLoading(false);
@@ -21,11 +23,7 @@ const ShowChats = ({ chatVisibility }) => {
 
   return (
     <div className="w-full max-w-4xl mx-auto p-2 bg-gray-800 rounded-lg overflow-y-auto no-scrollbar">
-      <Chat
-        loading={isLoading}
-        chatArray={chats}
-        chatVisibility={chatVisibility}
-      />
+      <Chat loading={isLoading} chatArray={chats} />
     </div>
   );
 };
