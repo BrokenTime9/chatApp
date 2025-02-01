@@ -29,6 +29,13 @@ const Chat = ({ loading, chatArray }) => {
         wsRef.current = newWs;
         setWs(newWs);
       };
+      newWs.onmessage = (event) => {
+        console.log("New message:", event.data);
+      };
+
+      return () => {
+        newWs.close();
+      };
     }
   }, [chatId, setWs]);
   return (
