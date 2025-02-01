@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import IdContext from "../../context/chatIdContext";
 import UserContext from "../../context/userContext";
 import WsContext from "../../context/wsContext";
@@ -7,6 +7,7 @@ const Chat = ({ loading, chatArray }) => {
   const { setChatId, chatId } = useContext(IdContext);
   const { user } = useContext(UserContext);
   const { ws, setWs } = useContext(WsContext);
+  const wsRef = useRef(null);
   const domain = [
     "ws://localhost:5000",
     "wss://chatappbackend-omj2.onrender.com",
@@ -18,17 +19,18 @@ const Chat = ({ loading, chatArray }) => {
 
   useEffect(() => {
     if (chatId.length > 0) {
-      if (ws) {
-        ws.close();
+      if (wsRef.current) {
+        wsRef.current.close();
       }
 
       const newWs = new WebSocket(`${domain[1]}?chatId=${chatId[0]}`);
 
       newWs.onopen = () => {
+        wsRef.current = newWs;
         setWs(newWs);
       };
     }
-  }, [chatId]);
+  }, [chatId, setWs]);
   return (
     <>
       {!loading ? (
