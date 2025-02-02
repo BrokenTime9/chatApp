@@ -65,7 +65,6 @@ const Dashboard = () => {
       { withCredentials: true },
     );
     console.log(res);
-    window.location.href = "/";
   };
 
   const toggleFormVisibility = () => {
