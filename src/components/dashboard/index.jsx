@@ -28,7 +28,6 @@ const Dashboard = () => {
         { withCredentials: true },
       );
       if (resp.data.redirectTo) {
-        setShow(false);
       }
 
       console.log("this runs");
