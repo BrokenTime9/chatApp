@@ -24,7 +24,7 @@ const Chat = ({ loading, chatArray }) => {
       }
 
       //#2 to change
-      const newWs = new WebSocket(`${domain[0]}?chatId=${chatId[0]}`);
+      const newWs = new WebSocket(`${domain[1]}?chatId=${chatId[0]}`);
 
       newWs.onopen = () => {
         wsRef.current = newWs;

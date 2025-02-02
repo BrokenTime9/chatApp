@@ -14,14 +14,22 @@ const ShowMessages = () => {
   const { url } = useContext(UrlContext);
 
   const handleMap = (e, i) => {
+    const isCurrentUser = e.owner.username === user;
+    const date = new Date(e.timestamp);
+
+    const options = { hour: "2-digit", minute: "2-digit" };
+    const timeString = date.toLocaleTimeString([], options);
+
     return (
       <div
-        className={`flex ${e.owner.username === user ? "justify-end" : "justify-start"} mb-2`}
+        className={`flex ${isCurrentUser ? "justify-end" : "justify-start"} mb-2`}
         key={i}
       >
-        <p className="bg-blue-500 text-white w-auto inline-block p-2 rounded-lg max-w-[80%] break-words whitespace-pre-wrap overflow-y-auto">
-          {e.content}
-        </p>
+        <div className="bg-blue-500 text-white flex gap-2 w-auto inline-block p-2 rounded-lg max-w-[80%] break-words whitespace-pre-wrap overflow-y-auto">
+          <p className="pt-1">{e.content}</p>
+
+          <p className={`text-xs text-white text-right pt-4`}>{timeString}</p>
+        </div>
       </div>
     );
   };

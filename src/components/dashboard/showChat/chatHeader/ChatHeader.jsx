@@ -26,7 +26,7 @@ const ChatHeader = ({ chat, chatVisibility, mobile }) => {
   useEffect(oppUserSetter, [chatId, user]);
 
   return (
-    <div className="h-18 bg-gray-500 text-white flex items-center p-4 font-semibold text-xl">
+    <div className="h-18 bg-gray-700 text-white flex items-center p-4 font-semibold text-xl">
       {(
         <h1 className="self-center" onClick={visible}>
           {oppUser}

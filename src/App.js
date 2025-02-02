@@ -10,7 +10,7 @@ const App = () => {
     "https://chatappbackend-omj2.onrender.com",
   ];
   //#1 to change
-  const [url, setUrl] = useState(domain[0]);
+  const [url, setUrl] = useState(domain[1]);
 
   return (
     <UrlContext.Provider value={{ url }}>

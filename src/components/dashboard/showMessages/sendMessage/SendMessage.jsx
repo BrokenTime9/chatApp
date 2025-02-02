@@ -26,6 +26,7 @@ const SendMessage = () => {
       content: context,
       owner: { username: user },
       chatId: chatId[0],
+      timestamp: Date.now(),
     };
 
     setContext("");
@@ -64,10 +65,10 @@ const SendMessage = () => {
   };
 
   return (
-    <div className="bg-gray-500 h-24  flex items-center justify-center">
+    <div className="bg-gray-700 h-24  flex items-center justify-center">
       <form className="flex items-center w-[95%]" onSubmit={handleSubmit}>
         <textarea
-          className="w-full max-h-48 rounded-lg p-2 resize-none overflow-hidden no-scrollbar"
+          className="bg-gray-600 text-white w-full rounded-lg p-2 resize-none overflow-hidden no-scrollbar"
           onChange={(e) => setContext(e.target.value)}
           onInput={adjustHeight}
           value={context}
@@ -83,7 +84,7 @@ const SendMessage = () => {
         />
         <button
           type="submit"
-          className="text-white text-xl font-semibold ml-3 hover:text-blue-400 duration-200"
+          className="text-white p-2 rounded-lg text-l font-semibold ml-2  hover:bg-blue-500 duration-200"
         >
           Send
         </button>
