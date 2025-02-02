@@ -29,7 +29,6 @@ const Dashboard = () => {
       );
       if (resp.data.redirectTo) {
         setShow(false);
-        window.location.href = "/";
       }
 
       console.log("this runs");
@@ -66,6 +65,7 @@ const Dashboard = () => {
       { withCredentials: true },
     );
     console.log(res);
+    window.location.href = "/";
   };
 
   const toggleFormVisibility = () => {
