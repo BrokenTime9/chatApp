@@ -29,7 +29,11 @@ const ShowMessages = () => {
   useEffect(() => {
     if (chatId[0]) {
       axios
-        .get(`${url}/api/messages/${chatId[0]}`)
+        .post(
+          `${url}/api/messages`,
+          { chatId: chatId[0] },
+          { withCredentials: true },
+        )
         .then((data) => {
           setMessages(data.data);
         })

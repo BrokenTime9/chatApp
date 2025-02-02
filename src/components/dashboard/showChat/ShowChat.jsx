@@ -16,7 +16,7 @@ const ShowChats = ({ chatVisibility }) => {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.error("error fetching chats", error.response.data);
+        console.error("error fetching chats", error.response);
         setIsLoading(false);
       });
   }, []);

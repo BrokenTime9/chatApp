@@ -39,6 +39,12 @@ const Dashboard = () => {
         console.error(e);
       });
   }, []);
+
+  const handleLogOut = () => {
+    const res = axios.get("/api/auth/logout", {}, { withCredentials: true });
+    window.location.href = "/";
+  };
+
   const toggleFormVisibility = () => {
     setIsFormVisible((prevState) => !prevState);
   };
@@ -76,6 +82,7 @@ const Dashboard = () => {
                   </h1>
                 </div>
                 <ShowChats />
+                <div onClick={handleLogOut}>Logout</div>
               </div>
             ) : (
               ""
