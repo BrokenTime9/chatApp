@@ -10,18 +10,26 @@ const AuthPage = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="space-y-6 max-w-lg w-full p-6 bg-white rounded shadow-lg">
-        <h1 className="text-center text-2xl font-bold text-gray-800">
-          {mode === "register" ? "Register" : "Login"}
+    <div className="flex items-center justify-center min-h-screen bg-gray-400">
+      <div className="space-y-6 max-w-sm w-full p-6 bg-gray-500 rounded-lg shadow">
+        <h1 className="text-center text-4xl text-white font-bold">
+          <h1>
+            Yo<span className="text-blue-400 ">bu</span>
+          </h1>
         </h1>
 
         {/* Register/Login Form */}
         <Register mode={mode} />
+        <button
+          onClick={toggleMode}
+          className="w-full py-2 px-2  bg-white text-blue-500 font-bold rounded shadow focus:outline-none "
+        >
+          {mode === "register" ? "Login" : "Register"}
+        </button>
 
         {/* Horizontal Line */}
         <div className="relative flex items-center justify-center">
-          <span className="absolute bg-white px-3 text-gray-500 text-sm">
+          <span className="absolute bg-gray-500 text-white px-3 text-gray-500 text-sm">
             OR
           </span>
           <hr className="w-full border-gray-300" />
@@ -31,12 +39,6 @@ const AuthPage = () => {
         <GoogleLoginButton mode={mode} />
 
         {/* Toggle Mode Button */}
-        <button
-          onClick={toggleMode}
-          className="w-full py-2 px-4 bg-gray-800 text-white font-semibold rounded shadow hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2"
-        >
-          Switch to {mode === "register" ? "Login" : "Register"}
-        </button>
       </div>
     </div>
   );

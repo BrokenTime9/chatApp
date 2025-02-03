@@ -1,5 +1,3 @@
-import React, { useContext } from "react";
-
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 let url = [
@@ -28,7 +26,7 @@ export const GoogleLoginButton = ({ mode }) => {
   return (
     <button
       onClick={loginWithGoogle}
-      className="w-full py-2 px-4 bg-red-500 text-white font-semibold rounded shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 flex items-center justify-center space-x-3"
+      className="w-full py-2 px-4 bg-white text-blue-500 font-bold rounded shadow flex items-center justify-center space-x-3 focus:outline-none"
     >
       {/* Google Icon */}
       <div className="w-5 h-5">

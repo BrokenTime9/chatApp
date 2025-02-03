@@ -38,12 +38,12 @@ const Register = ({ mode }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-4 max-w-md mx-auto p-4 bg-gray-50 rounded shadow"
+      className="space-y-4 max-w-md mx-auto p-4 bg-gray-500 rounded "
     >
       <input
         type="text"
         id="username"
-        className="mt-1 p-2 block w-full rounded border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+        className="mt-1 p-2 block w-full rounded bg-white text-black font-semibold border-gray-500 shadow-sm focus:outline-none"
         placeholder="Username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
@@ -53,7 +53,7 @@ const Register = ({ mode }) => {
       <input
         type="password"
         id="password"
-        className="mt-1 p-2 block w-full rounded border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+        className="mt-1 p-2 block w-full rounded bg-white text-black font-semibold border-gray-300 shadow-sm focus:outline-none"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
@@ -62,7 +62,7 @@ const Register = ({ mode }) => {
 
       <button
         type="submit"
-        className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        className="w-full py-2 px-4 bg-white text-blue-500 font-bold rounded shadow "
       >
         {mode === "register" ? "Register" : "Login"}
       </button>
