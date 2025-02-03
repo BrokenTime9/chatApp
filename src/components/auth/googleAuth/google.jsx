@@ -1,11 +1,15 @@
 import React, { useContext } from "react";
-import UrlContext from "../../context/urlContext";
 
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
+let url = [
+  "http://localhost:3000/loading",
+  "https://chat-app-zeta-roan.vercel.app/loading",
+];
+
 export const GoogleLoginButton = ({ mode }) => {
-  const { url } = useContext(UrlContext);
-  const REDIRECT_URI = `${url}/api/auth/google${mode}`;
+  //#3 to change
+  const REDIRECT_URI = `${url[1]}`;
 
   const loginWithGoogle = () => {
     const GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth";

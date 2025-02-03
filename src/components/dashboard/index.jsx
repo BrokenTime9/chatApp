@@ -27,10 +27,9 @@ const Dashboard = () => {
         {},
         { withCredentials: true },
       );
-      if (resp.data.redirectTo) {
+      if (resp?.data?.redirectTo) {
+        window.location.href = "/";
       }
-
-      console.log("this runs");
     };
 
     checkLogin();
@@ -57,13 +56,16 @@ const Dashboard = () => {
       });
   }, []);
 
-  const handleLogOut = () => {
-    const res = axios.post(
+  const handleLogOut = async () => {
+    const res = await axios.post(
       `${url}/api/auth/logout`,
       {},
       { withCredentials: true },
     );
-    console.log(res);
+
+    if (res?.data?.redirectTo) {
+      window.location.href = "/";
+    }
   };
 
   const toggleFormVisibility = () => {
