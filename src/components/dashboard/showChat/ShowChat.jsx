@@ -22,7 +22,7 @@ const ShowChats = ({ chatVisibility }) => {
   }, []);
 
   return (
-    <div className="w-full max-w-4xl flex-grow mx-auto p-2 bg-gray-700 rounded-lg overflow-y-auto no-scrollbar">
+    <div className="w-full max-w-4xl flex-grow mx-auto p-6 bg-gradient-to-r from-gray-700 to-gray-800 overflow-y-auto no-scrollbar">
       <Chat loading={isLoading} chatArray={chats} />
     </div>
   );

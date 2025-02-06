@@ -79,10 +79,10 @@ const Dashboard = () => {
       <IdContext.Provider value={{ chatId, setChatId }}>
         <WsContext.Provider value={{ ws, setWs }}>
           {show ? (
-            <div className="flex h-[100%] min-h-96">
+            <div className="flex h-screen w-screen">
               {isChatVisible ? (
                 <div
-                  className=" bg-gray-800 text-white p-4  flex-col justify-between"
+                  className="bg-gradient-to-r from-gray-700 to-gray-800 text-white p-6 flex-col justify-between shadow-lg"
                   style={{
                     width: isMobile
                       ? !chatId.length > 0
@@ -99,7 +99,7 @@ const Dashboard = () => {
                   <div className="flex flex-row text-xl font-semibold mb-5 justify-between">
                     <h1>Chats</h1>
                     <h1
-                      className="text-white font-semibold"
+                      className="text-white font-semibold cursor-pointer"
                       onClick={toggleFormVisibility}
                     >
                       ⫶
@@ -108,7 +108,7 @@ const Dashboard = () => {
                   <ShowChats />
                   <div
                     onClick={handleLogOut}
-                    className="p-3 mt-3 mb-1 bg-gray-100 rounded-lg shadow-md hover:bg-gray-200 cursor-pointer text-red-500 font-bold text-xl text-center"
+                    className="p-3 mt-3 mb-1 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 cursor-pointer text-center text-xl font-semibold"
                   >
                     Logout
                   </div>
@@ -116,7 +116,7 @@ const Dashboard = () => {
               ) : (
                 ""
               )}
-              <div className="flex flex-col flex-grow h-screen">
+              <div className="flex flex-col  flex-grow bg-gray-100 rounded-lg shadow-lg">
                 {chatId.length > 1 ? (
                   <>
                     <ChatHeader
@@ -126,7 +126,14 @@ const Dashboard = () => {
                         isMobile ? toggleChatVisibility : undefined
                       }
                     />
-                    <ShowMessages />
+                  </>
+                ) : (
+                  ""
+                )}
+                <ShowMessages />
+
+                {chatId.length > 1 ? (
+                  <>
                     <SendMessage />
                   </>
                 ) : (

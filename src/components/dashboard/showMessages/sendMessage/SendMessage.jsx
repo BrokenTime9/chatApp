@@ -65,10 +65,13 @@ const SendMessage = () => {
   };
 
   return (
-    <div className="bg-gray-700 h-24  flex items-center justify-center">
-      <form className="flex items-center w-[95%]" onSubmit={handleSubmit}>
+    <div className="bg-gray-700 h-24 p-4 flex items-center justify-center shadow-md">
+      <form
+        className="flex items-center align-center w-[95%]"
+        onSubmit={handleSubmit}
+      >
         <textarea
-          className="bg-gray-600 text-white w-full rounded-lg p-2 resize-none overflow-hidden no-scrollbar"
+          className="bg-gray-600 text-white w-full rounded-lg p-3 resize-none overflow-hidden no-scrollbar focus:outline-none"
           onChange={(e) => setContext(e.target.value)}
           onInput={adjustHeight}
           value={context}
@@ -84,7 +87,7 @@ const SendMessage = () => {
         />
         <button
           type="submit"
-          className="text-white p-2 rounded-lg text-l font-semibold ml-2  hover:bg-blue-500 duration-200"
+          className="text-white p-2 rounded-lg text-lg font-semibold ml-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:bg-blue-700 duration-200"
         >
           Send
         </button>

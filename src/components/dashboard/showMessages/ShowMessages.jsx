@@ -22,10 +22,12 @@ const ShowMessages = () => {
 
     return (
       <div
-        className={`flex ${isCurrentUser ? "justify-end" : "justify-start"} mb-2`}
+        className={`flex ${isCurrentUser ? "justify-end" : "justify-start"} mb-3`}
         key={i}
       >
-        <div className="bg-blue-500 text-white flex gap-2 w-auto inline-block p-2 rounded-lg max-w-[80%] break-words whitespace-pre-wrap overflow-y-auto">
+        <div
+          className={`bg-gradient-to-r bg-blue-500 text-white flex gap-2 w-auto inline-block p-3 rounded-lg max-w-[80%] break-words whitespace-pre-wrap`}
+        >
           <p className="pt-1">{e.content}</p>
 
           <p className={`text-xs text-white text-right pt-4`}>{timeString}</p>
@@ -72,13 +74,20 @@ const ShowMessages = () => {
       messageEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
+
   return (
-    <div className="flex-grow h-[90%] p-4 overflow-y-auto no-scrollbar">
-      {chatId === ""
-        ? "Click on a chat to show messages"
-        : !messages || messages.length === 0
-          ? "No messages in this chat yet"
-          : messages.map(handleMap)}
+    <div className="flex-grow p-12 pb-0 overflow-y-auto bg-gray-700 shadow-md no-scrollbar">
+      {!chatId || chatId.length === 0 ? (
+        <div className="flex items-center justify-center h-full text-center text-gray-400 font-semibold text-lg">
+          <p>Click on a chat to show messages</p>
+        </div>
+      ) : !messages || messages.length === 0 ? (
+        <div className="flex items-center justify-center h-full text-center text-gray-400 font-semibold text-lg">
+          <p>No messages in this chat yet</p>
+        </div>
+      ) : (
+        messages.map(handleMap)
+      )}
       <div ref={messageEndRef} />
     </div>
   );
