@@ -5,7 +5,7 @@ import UserContext from "../context/userContext";
 import WsContext from "../context/wsContext";
 import UrlContext from "../../context/urlContext";
 
-const ShowMessages = () => {
+const ShowMessages = ({ mob }) => {
   const { chatId } = useContext(IdContext);
   const { user } = useContext(UserContext);
   const [messages, setMessages] = useState([]);
@@ -76,9 +76,13 @@ const ShowMessages = () => {
   }, [messages]);
 
   return (
-    <div className="flex-grow p-12 pb-0 overflow-y-auto bg-gray-700 shadow-md no-scrollbar">
+    <div
+      className={`${mob && chatId.length === 0 ? "hidden" : ""} flex-grow p-12 pb-0 overflow-y-auto bg-gray-700 shadow-md no-scrollbar`}
+    >
       {!chatId || chatId.length === 0 ? (
-        <div className="flex items-center justify-center h-full text-center text-gray-400 font-semibold text-lg">
+        <div
+          className={`${mob && chatId.length === 0 ? "hidden" : "flex"} items-center justify-center h-full text-center text-gray-400 font-semibold text-lg`}
+        >
           <p>Click on a chat to show messages</p>
         </div>
       ) : !messages || messages.length === 0 ? (

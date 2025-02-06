@@ -130,8 +130,7 @@ const Dashboard = () => {
                 ) : (
                   ""
                 )}
-                <ShowMessages />
-
+                <ShowMessages mob={isMobile} />
                 {chatId.length > 1 ? (
                   <>
                     <SendMessage />
