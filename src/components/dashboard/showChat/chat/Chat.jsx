@@ -48,7 +48,7 @@ const Chat = ({ loading, chatArray }) => {
           <div
             key={i}
             onClick={() => handleClick(chat)}
-            className="flex items-center justify-between p-4 mb-4 bg-gradient-to-r from-gray-700 to-gray-800 text-white rounded-lg shadow-lg hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700 cursor-pointer"
+            className="flex items-center justify-between p-4 mb-4 bg-gradient-to-r from-gray-500 to-gray-600 text-white rounded-lg shadow-lg hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700 cursor-pointer"
           >
             {/* Owner 1 */}
             <div className="text-lg font-semibold">

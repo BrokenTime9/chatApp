@@ -67,8 +67,7 @@ const Dashboard = () => {
       window.location.href = "/";
     }
   };
-
-  const toggleFormVisibility = () => {
+  const handleAdd = () => {
     setIsFormVisible((prevState) => !prevState);
   };
   const toggleChatVisibility = () => {
@@ -98,14 +97,16 @@ const Dashboard = () => {
                 >
                   <div className="flex flex-row text-xl font-semibold mb-5 justify-between">
                     <h1>Chats</h1>
-                    <h1
-                      className="text-white font-semibold cursor-pointer"
-                      onClick={toggleFormVisibility}
-                    >
-                      ⫶
-                    </h1>
+                    <h1>⫶</h1>
                   </div>
-                  <ShowChats />
+                  <ShowChats addF={isFormVisible} />
+                  <div
+                    onClick={handleAdd}
+                    className="p-3 mt-3 mb-1 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 cursor-pointer text-center text-xl font-semibold"
+                  >
+                    Add friend
+                  </div>
+
                   <div
                     onClick={handleLogOut}
                     className="p-3 mt-3 mb-1 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 cursor-pointer text-center text-xl font-semibold"
@@ -139,7 +140,6 @@ const Dashboard = () => {
                   ""
                 )}
               </div>
-              {isFormVisible && <CreateChat />}
             </div>
           ) : (
             ""

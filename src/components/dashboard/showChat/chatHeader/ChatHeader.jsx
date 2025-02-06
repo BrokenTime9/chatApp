@@ -32,6 +32,7 @@ const ChatHeader = ({ chat, chatVisibility, mobile }) => {
           className="self-center cursor-pointer hover:text-blue-500 transition duration-200"
           onClick={visible}
         >
+          {mobile ? "< " : ""}
           {oppUser}
         </h1>
       )}
