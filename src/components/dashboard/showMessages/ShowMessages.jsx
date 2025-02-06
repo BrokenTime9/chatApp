@@ -16,13 +16,14 @@ const ShowMessages = ({ mob }) => {
   const handleMap = (e, i, messages) => {
     const isCurrentUser = e.owner.username === user;
     const date = new Date(e.timestamp);
-    console.log(e);
 
     const options = { hour: "2-digit", minute: "2-digit" };
     const timeString = date.toLocaleTimeString([], options);
+    let unique = false;
     const currentOwner = e.owner.username;
     if (messages[i - 1]) {
       const prevOwner = messages[i - 1].owner.username;
+      unique = currentOwner !== prevOwner;
     }
 
     return (
@@ -31,11 +32,17 @@ const ShowMessages = ({ mob }) => {
         key={i}
       >
         <div
-          className={`relative bg-gradient-to-r bg-blue-500 text-white flex gap-2 w-auto inline-block pt-2 pl-3 pb-4 pr-11 rounded-lg max-w-full break-words whitespace-pre-wrap break-words break-all`}
+          className={`relative z-999 bg-gradient-to-r bg-blue-500 text-white flex gap-2 w-auto inline-block pt-2 pl-3 pb-4 pr-11 rounded-lg max-w-full break-words whitespace-pre-wrap break-words break-all`}
         >
-          {
-            <div class="absolute top-0 right-0 w-0 h-0 border-t-8 border-r-8 border-t-blue-500 border-r-blue-500"></div>
-          }
+          {unique ? (
+            isCurrentUser ? (
+              <div class="z-0 absolute top-0 right-[-32px] border-r-[14px] border-l-[28px] border-b-[14px] border-r-transparent border-l-blue-500 border-b-transparent rounded-[20px]"></div>
+            ) : (
+              <div class="z-0 absolute top-0 left-[-32px] border-l-[14px] border-r-[28px] border-b-[14px] border-l-transparent border-r-blue-500 border-b-transparent rounded-[20px]"></div>
+            )
+          ) : (
+            ""
+          )}
           <p className="pt-1">{e.content}</p>
 
           <p className={`text-xs text-white absolute right-2 bottom-1`}>
