@@ -10,7 +10,7 @@ const AuthPage = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen w-screen bg-gradient-to-r from-gray-600 to-gray-400">
+    <div className="flex items-center justify-center min-h-[100dvh] w-screen bg-gradient-to-r from-gray-600 to-gray-400">
       <div className="max-w-sm w-full p-6 bg-gray-500 rounded-lg shadow-lg">
         {/* Header: Logo and Button with offset effect */}
         <div className="flex items-center justify-between mb-6 relative">
