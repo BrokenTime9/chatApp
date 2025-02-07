@@ -2,13 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import ShowChats from "./showChat/ShowChat";
 import ChatHeader from "./showChat/chatHeader/ChatHeader";
-import CreateChat from "./createChat/CreateChat";
 import ShowMessages from "./showMessages/ShowMessages";
 import IdContext from "./context/chatIdContext";
 import UserContext from "./context/userContext";
 import SendMessage from "./showMessages/sendMessage/SendMessage";
 import WsContext from "./context/wsContext";
 import UrlContext from "../context/urlContext";
+import MobileContext from "./context/mobileWidth";
 
 const Dashboard = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -17,8 +17,8 @@ const Dashboard = () => {
   const [isChatVisible, setIsChatVisible] = useState(true);
   const [show, setShow] = useState(true);
   const [ws, setWs] = useState("");
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 769);
   const { url } = useContext(UrlContext);
+  const { isMobile } = useContext(MobileContext);
 
   useEffect(() => {
     const checkLogin = async () => {
@@ -34,17 +34,6 @@ const Dashboard = () => {
 
     checkLogin();
   }, []);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 769);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   useEffect(() => {
     axios
       .post(`${url}/api/user`, {}, { withCredentials: true })
@@ -78,7 +67,7 @@ const Dashboard = () => {
       <IdContext.Provider value={{ chatId, setChatId }}>
         <WsContext.Provider value={{ ws, setWs }}>
           {show ? (
-            <div className="flex h-screen w-screen">
+            <div className="flex min-h-[100dvh] w-screen">
               {isChatVisible ? (
                 <div
                   className="bg-gradient-to-r from-gray-700 to-gray-800 text-white p-6 flex-col justify-between shadow-lg"

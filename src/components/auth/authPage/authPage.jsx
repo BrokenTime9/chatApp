@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { GoogleLoginButton } from "../googleAuth/google";
 import Register from "../localAuth/register";
+import MobileContext from "../../dashboard/context/mobileWidth";
 
 const AuthPage = () => {
   const [mode, setMode] = useState("login");
+  const { isMobile } = useContext(MobileContext);
 
   const toggleMode = () => {
     setMode((prevMode) => (prevMode === "register" ? "login" : "register"));
@@ -11,7 +13,9 @@ const AuthPage = () => {
 
   return (
     <div className="flex items-center justify-center min-h-[100dvh] w-screen bg-gradient-to-r from-gray-600 to-gray-400">
-      <div className="max-w-sm w-full p-6 bg-gray-500 rounded-lg shadow-lg">
+      <div
+        className={`max-w-sm ${!isMobile ? "w-full" : "w-90%"} p-6 bg-gray-500 rounded-lg shadow-lg`}
+      >
         {/* Header: Logo and Button with offset effect */}
         <div className="flex items-center justify-between mb-6 relative">
           <h1 className="text-5xl text-white font-extrabold transform -translate-y-1">
