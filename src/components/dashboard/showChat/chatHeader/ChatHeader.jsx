@@ -26,14 +26,15 @@ const ChatHeader = ({ chat, chatVisibility, mobile }) => {
   useEffect(oppUserSetter, [chatId, user]);
 
   return (
-    <div className="h-18 bg-gray-800 text-white flex items-center p-4 font-semibold text-xl shadow-md">
+    <div className="h-18 bg-gray-800 text-white flex justify-between p-4 font-semibold text-xl shadow-md">
       {oppUser && (
-        <h1
-          className="self-center cursor-pointer hover:text-blue-500 transition duration-200"
-          onClick={visible}
-        >
-          {mobile ? "< " : ""}
+        <h1 className="self-center cursor-pointer hover:text-blue-500 transition duration-200">
           {oppUser}
+        </h1>
+      )}
+      {mobile && (
+        <h1 className="text-red-500" onClick={visible}>
+          &#x2715;
         </h1>
       )}
     </div>
