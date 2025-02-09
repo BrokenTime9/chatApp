@@ -36,38 +36,37 @@ const Register = ({ mode }) => {
     }
   };
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="space-y-6 max-w-md mx-auto p-6 bg-gray-500 rounded-lg"
-    >
+    <form onSubmit={handleSubmit} className=" w-full bg-transparent rounded-lg">
       {/* Username Input */}
+      <label for="username" className="text-white">
+        Username
+      </label>{" "}
       <input
         type="text"
         id="username"
-        className="mt-1 p-3 block w-full rounded-lg bg-white text-black font-semibold border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
-        placeholder="Username"
+        className=" p-3 mt-2 mb-4 block w-full rounded-sm bg-white text-black font-semibold border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         required
       />
-
       {/* Password Input */}
+      <label for="password" className="text-white">
+        Password
+      </label>{" "}
       <input
         type="password"
         id="password"
-        className="mt-1 p-3 block w-full rounded-lg bg-white text-black font-semibold border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
-        placeholder="Password"
+        className="mt-2 mb-4 p-3 block w-full rounded-sm bg-white text-black font-semibold border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
       />
-
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full py-3 px-5 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold rounded-lg shadow-xl hover:scale-105 transition-transform"
+        className="w-full mt-12 py-3 px-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-sm shadow-xl hover:scale-105 transition-transform"
       >
-        {mode === "register" ? "Register" : "Login"}
+        {mode === "register" ? "Sign Up" : "Sign in"}
       </button>
     </form>
   );

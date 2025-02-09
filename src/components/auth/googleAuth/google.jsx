@@ -27,7 +27,7 @@ export const GoogleLoginButton = () => {
   return (
     <button
       onClick={loginWithGoogle}
-      className="w-full py-3 px-5 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold rounded-lg shadow-xl flex items-center justify-center space-x-3 hover:scale-105 transition-transform"
+      className="w-full py-3 px-5  bg-gradient-to-r from-blue-600 to-blue-700  text-white font-bold rounded-sm  flex items-center justify-center space-x-3 hover:scale-105 transition-transform"
     >
       {/* Google Icon */}
       <div className="w-6 h-6">

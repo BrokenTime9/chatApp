@@ -13,7 +13,7 @@ const Loading = ({ url }) => {
     );
 
     if (resp?.data?.redirectTo) {
-      window.location.href = "/dashboard";
+      window.location.href = "/";
     }
   };
 

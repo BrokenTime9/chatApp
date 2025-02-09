@@ -28,7 +28,7 @@ const Dashboard = () => {
         { withCredentials: true },
       );
       if (resp?.data?.redirectTo) {
-        window.location.href = "/";
+        window.location.href = "/signin";
       }
     };
 
@@ -53,7 +53,7 @@ const Dashboard = () => {
     );
 
     if (res?.data?.redirectTo) {
-      window.location.href = "/";
+      window.location.href = "/signin";
     }
   };
   const handleAdd = () => {
