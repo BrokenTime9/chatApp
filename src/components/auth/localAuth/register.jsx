@@ -44,7 +44,7 @@ const Register = ({ mode }) => {
       <input
         type="text"
         id="username"
-        className=" p-3 mt-2 mb-4 block w-full rounded-sm bg-white text-black font-semibold border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        className=" p-3 mt-1 mb-4 block w-full rounded-sm bg-white text-black font-semibold border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         required
@@ -56,7 +56,7 @@ const Register = ({ mode }) => {
       <input
         type="password"
         id="password"
-        className="mt-2 mb-4 p-3 block w-full rounded-sm bg-white text-black font-semibold border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        className="mt-1 mb-4 p-3 block w-full rounded-sm bg-white text-black font-semibold border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
@@ -64,7 +64,7 @@ const Register = ({ mode }) => {
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full mt-12 py-3 px-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-sm shadow-xl hover:scale-105 transition-transform"
+        className="w-full mt-8 py-3 px-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-sm shadow-xl hover:scale-105 transition-transform"
       >
         {mode === "register" ? "Sign Up" : "Sign in"}
       </button>
