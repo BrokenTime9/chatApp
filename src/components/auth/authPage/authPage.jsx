@@ -13,13 +13,9 @@ export const Login = () => {
         className={`max-w-sm max-h-[95dvh] ${!isMobile ? "w-full" : "w-90%"} p-6 bg-black rounded-sm shadow-lg`}
       >
         {/* Header: Logo and Button with offset effect */}
-        <div className="flex justify-between items-center p-8">
+        <div className="flex justify-center items-center p-8">
           <h1 className="text-5xl text-blue-600">
             呼<span className="text-white">ぶ</span>
-          </h1>
-          <h1 className="text-5xl text-white font-extrabold transform-translate-y-1">
-            Yo
-            <span className="text-blue-600">bu</span>
           </h1>
         </div>
 
@@ -58,13 +54,9 @@ export const Signup = () => {
         className={`max-w-sm max-h-[95dvh] ${!isMobile ? "w-full" : "w-90%"} p-6 bg-black rounded-sm shadow-lg`}
       >
         {/* Header: Logo and Button with offset effect */}
-        <div className="flex justify-between items-center p-8">
+        <div className="flex justify-center items-center p-8">
           <h1 className="text-5xl text-blue-600">
             呼<span className="text-white">ぶ</span>
-          </h1>
-          <h1 className="text-5xl text-white font-extrabold transform-translate-y-1">
-            Yo
-            <span className="text-blue-600">bu</span>
           </h1>
         </div>
         {/* Register/Login Form */}
