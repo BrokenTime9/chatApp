@@ -10,12 +10,12 @@ export const Login = () => {
       className={`flex items-center justify-center min-h-[100dvh] w-screen  ${isMobile ? "bg-black" : " bg-gradient-to-r from-gray-600 to-gray-400"} cursor-default`}
     >
       <div
-        className={`max-w-sm ${!isMobile ? "w-full" : "w-90%"} p-6 bg-black shadow-lg`}
+        className={`max-w-sm max-h-[95dvh] ${!isMobile ? "w-full" : "w-90%"} p-6 bg-black shadow-lg`}
       >
         {/* Header: Logo and Button with offset effect */}
-        <div className="flex  justify-around align-center mt-6 mb-8 relative">
-          <h1 className="text-5xl text-white">
-            呼<span className="text-blue-600">ぶ</span>
+        <div className="flex justify-around items-center mt-6 mb-8 relative">
+          <h1 className="text-5xl text-blue-600">
+            呼<span className="text-white">ぶ</span>
           </h1>
           <h1 className="text-5xl text-white font-extrabold transform -translate-y-1">
             Yo
@@ -56,12 +56,12 @@ export const Signup = () => {
       className={`flex items-center justify-center min-h-[100dvh] w-screen  ${isMobile ? "bg-black" : " bg-gradient-to-r from-gray-600 to-gray-400"} cursor-default`}
     >
       <div
-        className={`max-w-sm ${!isMobile ? "w-full" : "w-90%"} p-6 bg-black shadow-lg`}
+        className={`max-w-sm max-h-[95dvh] ${!isMobile ? "w-full" : "w-90%"} p-6 bg-black shadow-lg`}
       >
         {/* Header: Logo and Button with offset effect */}
         <div className="flex  justify-around align-center mt-6 mb-8 relative">
-          <h1 className="text-5xl text-white">
-            呼<span className="text-blue-600">ぶ</span>
+          <h1 className="text-5xl text-blue-600">
+            呼<span className="text-white">ぶ</span>
           </h1>
           <h1 className="text-5xl text-white font-extrabold transform -translate-y-1">
             Yo
