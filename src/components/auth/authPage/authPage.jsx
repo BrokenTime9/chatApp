@@ -14,7 +14,7 @@ export const Login = () => {
       >
         {/* Header: Logo and Button with offset effect */}
         <div
-          className={`flex items-center p-8 pt-2 ${isMobile ? "flex-col items-start w-full" : "flex-row justify-center"}`}
+          className={`flex items-center p-8 pt-2 pb-4 ${isMobile ? "flex-col items-start w-full" : "flex-row justify-center"}`}
         >
           <h1 className="text-5xl text-blue-600 self-start">呼 </h1>
           <h1 className="text-black text-5xl self-start">ぶ</h1>
