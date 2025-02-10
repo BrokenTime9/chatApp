@@ -13,10 +13,11 @@ export const Login = () => {
         className={`${!isMobile ? "max-w-sm" : "max-w-[80%]"} max-h-[95dvh] w-full  p-6 bg-white rounded-sm shadow-lg`}
       >
         {/* Header: Logo and Button with offset effect */}
-        <div className="flex justify-center items-center p-8">
-          <h1 className="text-5xl text-blue-600">
-            呼<span className="text-black">ぶ</span>
-          </h1>
+        <div
+          className={`flex items-center p-8 ${isMobile ? "flex-col items-start w-full" : "flex-row justify-center"}`}
+        >
+          <h1 className="text-5xl text-blue-600 self-start">呼 </h1>
+          <h1 className="text-black text-5xl self-start">ぶ</h1>
         </div>
 
         {/* Register/Login Form */}
@@ -53,13 +54,13 @@ export const Signup = () => {
       <div
         className={`max-w-sm max-h-[95dvh] ${!isMobile ? "w-full" : "w-90%"} p-6 bg-white rounded-sm shadow-lg`}
       >
-        {/* Header: Logo and Button with offset effect */}
-        <div className="flex justify-center items-center p-8">
-          <h1 className="text-5xl text-blue-600">
-            呼<span className="text-black">ぶ</span>
-          </h1>
+        <div
+          className={`flex items-center p-8 ${isMobile ? "flex-col items-start w-full" : "flex-row justify-center"}`}
+        >
+          <h1 className="text-5xl text-blue-600 self-start">呼 </h1>
+          <h1 className="text-black text-5xl self-start">ぶ</h1>
         </div>
-        {/* Register/Login Form */}
+
         <Register mode={"register"} />
         {/* Horizontal Line */}
         <div className="relative flex items-center justify-center mt-6 mb-6">
