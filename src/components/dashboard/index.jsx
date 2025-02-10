@@ -34,6 +34,7 @@ const Dashboard = () => {
 
     checkLogin();
   }, []);
+
   useEffect(() => {
     axios
       .post(`${url}/api/user`, {}, { withCredentials: true })
@@ -53,7 +54,7 @@ const Dashboard = () => {
     );
 
     if (res?.data?.redirectTo) {
-      window.location.href = "/signin";
+      window.location.href = res.data.redirectTo;
     }
   };
   const handleAdd = () => {
@@ -70,7 +71,7 @@ const Dashboard = () => {
             <div className="flex min-h-[100dvh] max-h-[100dvh] w-screen">
               {isChatVisible ? (
                 <div
-                  className="bg-gradient-to-r from-gray-700 to-gray-800 text-white p-6 pb-4 flex-col justify-between shadow-lg"
+                  className="bg-white text-black p-6 pb-4 flex-col justify-between shadow-lg"
                   style={{
                     width: isMobile
                       ? !chatId.length > 0
@@ -84,10 +85,17 @@ const Dashboard = () => {
                       : "flex",
                   }}
                 >
-                  <div className="flex flex-row text-xl font-semibold mb-5 justify-between">
-                    <h1>Chats</h1>
-                    <h1 className="text-blue-500">{user}</h1>
+                  <div className="flex justify-between text-2xl font-semibold mb-5">
+                    <div className="flex">
+                      <h1>Hello &nbsp; </h1>
+                      <h1 className="text-blue-500">{user}&#x1F44B;</h1>
+                    </div>
+                    <div>+</div>
                   </div>
+                  <input
+                    className="p-4 mb-2 flex-grow bg-gray-200 rounded-full"
+                    placeholder="search"
+                  />
                   <ShowChats addF={isFormVisible} />
                   <div
                     onClick={handleAdd}

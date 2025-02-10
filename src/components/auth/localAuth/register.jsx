@@ -20,7 +20,6 @@ const Register = ({ mode }) => {
         { withCredentials: true },
       );
       if (response.data.redirectTo) {
-        console.log(response.data.redirectTo);
         window.location.href = response.data.redirectTo;
       }
       console.log(response);
@@ -38,25 +37,21 @@ const Register = ({ mode }) => {
   return (
     <form onSubmit={handleSubmit} className=" w-full bg-transparent rounded-lg">
       {/* Username Input */}
-      <label for="username" className="text-white">
-        Username
-      </label>{" "}
+      <label>Username</label>{" "}
       <input
         type="text"
         id="username"
-        className=" p-3 mt-1 mb-4 block w-full rounded-sm bg-white text-black font-semibold border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        className=" p-3 mt-1 mb-4 block w-full rounded-sm bg-gray-200 text-black font-semibold border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         required
       />
       {/* Password Input */}
-      <label for="password" className="text-white">
-        Password
-      </label>{" "}
+      <label>Password</label>{" "}
       <input
         type="password"
         id="password"
-        className="mt-1 mb-4 p-3 block w-full rounded-sm bg-white text-black font-semibold border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        className="mt-1 mb-4 p-3 block w-full rounded-sm bg-gray-200 text-black font-semibold border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required

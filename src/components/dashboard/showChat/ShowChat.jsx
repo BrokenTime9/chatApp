@@ -23,7 +23,7 @@ const ShowChats = ({ addF }) => {
   }, []);
 
   return (
-    <div className="w-full max-w-4xl flex-grow mx-auto p-2 bg-gradient-to-r from-gray-700 to-gray-800 overflow-y-auto no-scrollbar">
+    <div className="w-full flex-grow overflow-y-auto no-scrollbar">
       {addF ? <CreateChat /> : ""}
       {!addF ? <Chat loading={isLoading} chatArray={chats} /> : ""}
     </div>

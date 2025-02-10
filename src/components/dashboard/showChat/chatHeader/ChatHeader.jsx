@@ -26,7 +26,7 @@ const ChatHeader = ({ chat, chatVisibility, mobile }) => {
   useEffect(oppUserSetter, [chatId, user]);
 
   return (
-    <div className="h-18 bg-gray-800 text-white flex justify-between p-4 font-semibold text-xl shadow-md">
+    <div className="h-18 bg-white text-black flex justify-between p-4 font-semibold text-xl shadow-md">
       {oppUser && (
         <h1 className="self-center cursor-pointer hover:text-blue-500 transition duration-200">
           {oppUser}
