@@ -7,7 +7,7 @@ export const Login = () => {
   const { isMobile } = useContext(MobileContext);
   return (
     <div
-      className={`flex items-center justify-center min-h-[100dvh] w-screen  ${isMobile ? "bg-black" : " bg-gradient-to-tr from-gray-400 to-white"} cursor-default`}
+      className={`flex items-center justify-center min-h-[100dvh] w-screen   bg-gradient-to-tr from-gray-400 to-white cursor-default`}
     >
       <div
         className={`max-w-sm max-h-[95dvh] ${!isMobile ? "w-full" : "w-90%"} p-6 bg-white rounded-sm shadow-lg`}
