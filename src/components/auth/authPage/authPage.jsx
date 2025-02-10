@@ -10,7 +10,7 @@ export const Login = () => {
       className={`flex items-center justify-center min-h-[100dvh] w-screen   bg-gradient-to-tr from-gray-400 to-white cursor-default`}
     >
       <div
-        className={`max-w-sm max-h-[95dvh] ${!isMobile ? "w-full" : "w-90%"} p-6 bg-white rounded-sm shadow-lg`}
+        className={`${!isMobile ? "max-w-sm" : "max-w-[80%]"} max-h-[95dvh] w-full  p-6 bg-white rounded-sm shadow-lg`}
       >
         {/* Header: Logo and Button with offset effect */}
         <div className="flex justify-center items-center p-8">
@@ -23,7 +23,7 @@ export const Login = () => {
         <Register mode={"login"} />
         {/* Horizontal Line */}
         <div className="relative flex items-center justify-center mt-6 mb-6">
-          <span className="absolute bg-white text-black px-4 text-sm font-medium">
+          <span className="absolute bg-gray-100 text-black px-4 text-sm font-medium">
             OR
           </span>
           <hr className="w-full border-gray-300" />
