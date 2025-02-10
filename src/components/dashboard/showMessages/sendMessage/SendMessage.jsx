@@ -87,7 +87,7 @@ const SendMessage = () => {
         />
         <button
           type="submit"
-          className="text-white p-2 rounded-lg text-lg font-semibold ml-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:bg-blue-700 duration-200"
+          className="text-white p-2 rounded-lg text-lg font-semibold ml-3 bg-blue-500"
         >
           Send
         </button>

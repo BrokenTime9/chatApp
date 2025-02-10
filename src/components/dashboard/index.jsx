@@ -9,6 +9,7 @@ import SendMessage from "./showMessages/sendMessage/SendMessage";
 import WsContext from "./context/wsContext";
 import UrlContext from "../context/urlContext";
 import MobileContext from "./context/mobileWidth";
+import { UserPlus, LogOut } from "lucide-react";
 
 const Dashboard = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -16,6 +17,7 @@ const Dashboard = () => {
   const [user, setUser] = useState("");
   const [isChatVisible, setIsChatVisible] = useState(true);
   const [show, setShow] = useState(true);
+  const [style, setStyle] = useState(false);
   const [ws, setWs] = useState("");
   const { url } = useContext(UrlContext);
   const { isMobile } = useContext(MobileContext);
@@ -63,6 +65,11 @@ const Dashboard = () => {
   const toggleChatVisibility = () => {
     setIsChatVisible((prevState) => !prevState);
   };
+
+  const toggleStyle = () => {
+    setStyle((prevState) => !prevState);
+  };
+
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <IdContext.Provider value={{ chatId, setChatId }}>
@@ -90,26 +97,34 @@ const Dashboard = () => {
                       <h1>Hello &nbsp; </h1>
                       <h1 className="text-blue-500">{user}&#x1F44B;</h1>
                     </div>
-                    <div>+</div>
+                    <div
+                      className={`pl-2 pr-2 flex flex-col items-center  ${style ? "bg-blue-500 text-white" : "bg-white text-blue-500"} rounded-sm cursor-pointer relative`}
+                      onClick={toggleStyle}
+                    >
+                      +
+                      {style && (
+                        <div className="absolute top-full -translate-x-1/8 bg-white text-black rounded-sm shadow-lg">
+                          <div
+                            className="p-2 hover:bg-green-200"
+                            onClick={handleAdd}
+                          >
+                            <UserPlus size={20} className="text-green-500" />
+                          </div>
+                          <div
+                            className="p-2 hover:bg-red-200"
+                            onClick={handleLogOut}
+                          >
+                            <LogOut size={20} className="text-red-500" />
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <input
                     className="p-4 mb-2 flex-grow bg-gray-200 rounded-full"
                     placeholder="search"
                   />
                   <ShowChats addF={isFormVisible} />
-                  <div
-                    onClick={handleAdd}
-                    className="p-3 mt-3 mb-1 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 cursor-pointer text-center text-xl font-semibold"
-                  >
-                    Add friend
-                  </div>
-
-                  <div
-                    onClick={handleLogOut}
-                    className="p-3 mt-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 cursor-pointer text-center text-xl font-semibold"
-                  >
-                    Logout
-                  </div>
                 </div>
               ) : (
                 ""
