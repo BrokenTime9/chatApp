@@ -10,11 +10,11 @@ export const Login = () => {
       className={`flex items-center justify-center min-h-[100dvh] w-screen   bg-gradient-to-tr from-gray-400 to-white cursor-default`}
     >
       <div
-        className={`${!isMobile ? "max-w-sm" : "max-w-[80%]"} max-h-[95dvh] w-full  p-6 bg-white rounded-sm shadow-lg`}
+        className={`max-w-sm max-h-[95dvh] ${!isMobile ? "w-full" : "w-90%"} p-6 bg-white rounded-sm shadow-lg`}
       >
         {/* Header: Logo and Button with offset effect */}
         <div
-          className={`flex items-center p-8 pt-2 pb-4 ${isMobile ? "flex-col items-start w-full" : "flex-row justify-center"}`}
+          className={`flex items-center ${!isMobile ? "p-8" : "pt-2 pb-4"} ${isMobile ? "flex-col items-start w-full" : "flex-row justify-center"}`}
         >
           <h1 className="text-5xl text-blue-600 self-start">呼 </h1>
           <h1 className="text-black text-5xl self-start">ぶ</h1>
@@ -36,7 +36,7 @@ export const Login = () => {
           className="font-semibold flex justify-center cursor-pointer"
           onClick={() => (window.location.href = "/signup")}
         >
-          <p className=" mt-12">
+          <p className={`${isMobile ? "mt-6" : "mt-12"} `}>
             No account? No chat!{" "}
             <span className="text-blue-800">Sign up here!?</span>
           </p>
@@ -55,7 +55,7 @@ export const Signup = () => {
         className={`max-w-sm max-h-[95dvh] ${!isMobile ? "w-full" : "w-90%"} p-6 bg-white rounded-sm shadow-lg`}
       >
         <div
-          className={`flex items-center p-8 ${isMobile ? "flex-col items-start w-full" : "flex-row justify-center"}`}
+          className={`flex items-center ${!isMobile ? "p-8" : "pt-2 pb-4"} ${isMobile ? "flex-col items-start w-full" : "flex-row justify-center"}`}
         >
           <h1 className="text-5xl text-blue-600 self-start">呼 </h1>
           <h1 className="text-black text-5xl self-start">ぶ</h1>
@@ -75,7 +75,7 @@ export const Signup = () => {
           className="font-semibold flex justify-center cursor-pointer"
           onClick={() => (window.location.href = "/signin")}
         >
-          <p className=" mt-12">
+          <p className={`${isMobile ? "mt-6" : "mt-12"} `}>
             You’re already famous here -
             <span className="text-blue-800"> Sign in!</span>
           </p>

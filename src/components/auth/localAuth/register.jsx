@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-
+import MobileContext from "../../dashboard/context/mobileWidth";
 import UrlContext from "../../context/urlContext";
 import axios from "axios";
 
@@ -7,6 +7,7 @@ const Register = ({ mode }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { url } = useContext(UrlContext);
+  const { isMobile } = useContext(MobileContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -59,7 +60,7 @@ const Register = ({ mode }) => {
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full mt-8 py-3 px-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-sm shadow-xl hover:scale-105 transition-transform"
+        className={`w-full ${isMobile ? "mt-4" : "mt-8"} py-3 px-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-sm shadow-xl hover:scale-105 transition-transform`}
       >
         {mode === "register" ? "Sign Up" : "Sign in"}
       </button>
