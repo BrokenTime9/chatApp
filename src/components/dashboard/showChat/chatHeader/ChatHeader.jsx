@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import IdContext from "../../context/chatIdContext";
 import UserContext from "../../context/userContext";
+import { Minimize2 } from "lucide-react";
 
 const ChatHeader = ({ chat, chatVisibility, mobile }) => {
   const { chatId, setChatId } = useContext(IdContext);
@@ -33,8 +34,11 @@ const ChatHeader = ({ chat, chatVisibility, mobile }) => {
         </h1>
       )}
       {mobile && (
-        <h1 className="text-red-500" onClick={visible}>
-          &#x2715;
+        <h1
+          className="text-red-500 font-semibold items-center"
+          onClick={visible}
+        >
+          <Minimize2 strokeWidth={2.5} />
         </h1>
       )}
     </div>

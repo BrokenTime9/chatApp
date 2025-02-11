@@ -124,7 +124,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                   <input
-                    className="p-4 bg-gray-200 rounded-full"
+                    className="p-4 mb-2 bg-gray-200 rounded-full"
                     placeholder="search"
                     onChange={
                       isFormVisible
