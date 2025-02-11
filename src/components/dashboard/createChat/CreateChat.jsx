@@ -1,53 +1,42 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import UrlContext from "../../context/urlContext";
-
-const CreateChat = () => {
+import { UserRoundPlus } from "lucide-react";
+const CreateChat = ({ friend }) => {
   const [user, setUser] = useState("");
   const { url } = useContext(UrlContext);
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      console.log(user);
-      const response = await axios.post(
-        `${url}/api/chat`,
-        {
-          owner2: user,
-        },
-        { withCredentials: true },
-      );
-      console.log(response);
-    } catch (error) {
-      if (error) {
-        console.error(error);
-      }
+  const [friends, setFriends] = useState();
+  useEffect(() => {
+    fetch();
+  }, [friend]);
+  const fetch = async () => {
+    const response = await axios.get(`${url}/api/users`, {
+      params: { username: friend },
+    });
+    if (friend === "") {
+      setFriends();
+    } else {
+      setFriends(response.data);
     }
   };
 
-  return (
-    <form
-      onSubmit={handleSubmit}
-      className="fixed bottom-28 left-3/4 transform -translate-x-1/2 bg-white p-6 rounded-lg shadow-lg w-96 z-10"
-    >
-      <h2 className="text-xl font-semibold mb-4 text-center">Create a Chat</h2>
-
-      <input
-        id="username"
-        type="text"
-        placeholder="Receiver's username"
-        onChange={(e) => setUser(e.target.value)}
-        required
-        className="w-full p-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-
-      <button
-        type="submit"
-        className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+  const handleMap = (e, i) => {
+    return (
+      <div
+        key={i}
+        className="flex justify-between p-4 mb-1 bg-white text-black rounded-sm cursor-pointer"
       >
-        Create Chat
-      </button>
-    </form>
-  );
+        <div className="text-lg font-semibold">{e.username}</div>
+        <div className="p-2 text-blue-500 rounded-full hover:bg-blue-500 hover:text-blue-200">
+          <UserRoundPlus size={20} />
+        </div>
+      </div>
+    );
+  };
+
+  const handleSubmit = async (e) => {};
+
+  return <>{friends ? friends.map(handleMap) : ""}</>;
 };
 
 export default CreateChat;

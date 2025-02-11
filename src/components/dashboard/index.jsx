@@ -21,6 +21,7 @@ const Dashboard = () => {
   const [ws, setWs] = useState("");
   const { url } = useContext(UrlContext);
   const { isMobile } = useContext(MobileContext);
+  const [addFriend, setAddFriend] = useState("");
 
   useEffect(() => {
     const checkLogin = async () => {
@@ -123,8 +124,15 @@ const Dashboard = () => {
                   <input
                     className="p-4 mb-2 bg-gray-200 rounded-full"
                     placeholder="search"
+                    onChange={
+                      isFormVisible
+                        ? (e) => {
+                            setAddFriend(e.target.value);
+                          }
+                        : null
+                    }
                   />
-                  <ShowChats addF={isFormVisible} />
+                  <ShowChats addF={isFormVisible} friend={addFriend} />
                 </div>
               ) : (
                 ""

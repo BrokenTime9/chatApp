@@ -4,7 +4,7 @@ import Chat from "./chat/Chat";
 import UrlContext from "../../context/urlContext";
 import CreateChat from "../createChat/CreateChat";
 
-const ShowChats = ({ addF }) => {
+const ShowChats = ({ addF, friend }) => {
   const [chats, setChats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { url } = useContext(UrlContext);
@@ -24,7 +24,7 @@ const ShowChats = ({ addF }) => {
 
   return (
     <div className="w-full flex-grow overflow-y-auto no-scrollbar">
-      {addF ? <CreateChat /> : ""}
+      {addF ? <CreateChat friend={friend} /> : ""}
       {!addF ? <Chat loading={isLoading} chatArray={chats} /> : ""}
     </div>
   );

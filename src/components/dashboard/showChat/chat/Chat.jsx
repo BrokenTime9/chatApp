@@ -40,7 +40,7 @@ const Chat = ({ loading, chatArray }) => {
         newWs.close();
       };
     }
-  }, [chatId, setWs]);
+  }, [chatId]);
   return (
     <>
       {!loading ? (
@@ -50,7 +50,6 @@ const Chat = ({ loading, chatArray }) => {
             onClick={() => handleClick(chat)}
             className="flex justify-between p-4 mb-1 bg-white text-black rounded-sm cursor-pointer"
           >
-            {/* Owner 1 */}
             <div className="text-lg font-semibold">
               {user === chat.owner1.username
                 ? chat.owner2.username
