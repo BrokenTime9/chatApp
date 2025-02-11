@@ -4,7 +4,7 @@ import IdContext from "../../context/chatIdContext";
 import WsContext from "../../context/wsContext";
 import UserContext from "../../context/userContext";
 import UrlContext from "../../../context/urlContext";
-
+import { Send } from "lucide-react";
 const SendMessage = () => {
   const [context, setContext] = useState("");
   const { chatId } = useContext(IdContext);
@@ -71,7 +71,7 @@ const SendMessage = () => {
         onSubmit={handleSubmit}
       >
         <textarea
-          className="bg-gray-200 text-white w-full rounded-lg p-3 resize-none overflow-hidden no-scrollbar focus:outline-none"
+          className="bg-gray-200 text-black w-full rounded-lg p-3 resize-none overflow-hidden no-scrollbar focus:outline-none"
           onChange={(e) => setContext(e.target.value)}
           onInput={adjustHeight}
           value={context}
@@ -87,9 +87,9 @@ const SendMessage = () => {
         />
         <button
           type="submit"
-          className="text-white p-2 rounded-lg text-lg font-semibold ml-3 bg-blue-500"
+          className="text-white p-3 rounded-lg text-lg font-semibold ml-3 bg-blue-500"
         >
-          Send
+          <Send />
         </button>
       </form>
     </div>

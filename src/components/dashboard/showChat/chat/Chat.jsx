@@ -50,7 +50,7 @@ const Chat = ({ loading, chatArray }) => {
             onClick={() => handleClick(chat)}
             className="flex justify-between p-4 mb-1 bg-white text-black rounded-sm cursor-pointer"
           >
-            <div className="text-lg font-semibold">
+            <div className="text-lg ">
               {user === chat.owner1.username
                 ? chat.owner2.username
                 : chat.owner1.username}

@@ -9,7 +9,7 @@ import SendMessage from "./showMessages/sendMessage/SendMessage";
 import WsContext from "./context/wsContext";
 import UrlContext from "../context/urlContext";
 import MobileContext from "./context/mobileWidth";
-import { UserPlus, LogOut } from "lucide-react";
+import { UserPlus, LogOut, Ellipsis } from "lucide-react";
 
 const Dashboard = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -99,22 +99,24 @@ const Dashboard = () => {
                       <h1 className="text-blue-500">{user}&#x1F44B;</h1>
                     </div>
                     <div
-                      className={`pl-2 pr-2 flex flex-col items-center  ${style ? "bg-blue-500 text-white" : "bg-white text-blue-500"} rounded-sm cursor-pointer relative`}
+                      className={`p-1 flex flex-col items-center  ${style ? "bg-blue-500 text-white" : "bg-white text-blue-500"} rounded-lg cursor-pointer relative`}
                       onClick={toggleStyle}
                     >
-                      +
+                      <Ellipsis />
                       {style && (
-                        <div className="absolute top-full -translate-x-1/8 bg-white text-black rounded-sm shadow-lg">
+                        <div className="absolute top-full -translate-x-6 bg-gray-100 text-black rounded-sm shadow-lg">
                           <div
-                            className="p-2 hover:bg-green-200"
+                            className="p-2 hover:bg-green-200 text-sm flex justify-between"
                             onClick={handleAdd}
                           >
+                            <p>Add</p>
                             <UserPlus size={20} className="text-green-500" />
                           </div>
                           <div
-                            className="p-2 hover:bg-red-200"
+                            className="p-2 hover:bg-red-200 text-sm flex justify-between gap-2"
                             onClick={handleLogOut}
                           >
+                            <p>Logout</p>
                             <LogOut size={20} className="text-red-500" />
                           </div>
                         </div>
@@ -122,7 +124,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                   <input
-                    className="p-4 mb-2 bg-gray-200 rounded-full"
+                    className="p-4 bg-gray-200 rounded-full"
                     placeholder="search"
                     onChange={
                       isFormVisible

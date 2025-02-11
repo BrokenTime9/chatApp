@@ -32,7 +32,7 @@ const ShowMessages = ({ mob }) => {
         key={i}
       >
         <div
-          className={`relative z-999  ${isCurrentUser ? "bg-blue-500 text-white" : "bg-white text-black "} flex w-auto inline-block pt-2 pl-3 pb-4 pr-11 rounded-lg max-w-full break-words whitespace-pre-wrap break-words break-all`}
+          className={`relative z-999  ${isCurrentUser ? "bg-blue-600 text-white" : "bg-white text-black "} flex w-auto inline-block pt-2 pl-3 pb-4 pr-11 rounded-lg max-w-full break-words whitespace-pre-wrap break-words break-all`}
         >
           <p className="pt-1">{e.content}</p>
 
