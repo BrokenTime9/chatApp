@@ -132,7 +132,11 @@ const Dashboard = () => {
                         : null
                     }
                   />
-                  <ShowChats addF={isFormVisible} friend={addFriend} />
+                  <ShowChats
+                    addF={isFormVisible}
+                    friend={addFriend}
+                    formVisible={handleAdd}
+                  />
                 </div>
               ) : (
                 ""
